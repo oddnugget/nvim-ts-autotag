@@ -35,7 +35,6 @@ local HTML_TAG = {
         'markdown',
         'php',
         'xml',
-        'heex'
     },
     start_tag_pattern      = 'start_tag',
     start_name_tag_pattern = 'tag_name',
@@ -45,6 +44,20 @@ local HTML_TAG = {
     close_name_tag_pattern = 'erroneous_end_tag_name',
     element_tag            = 'element',
     skip_tag_pattern       = { 'quoted_attribute_value', 'end_tag' },
+}
+
+local HEEX_TAG = {
+	filetypes = {
+		"heex",
+	},
+	start_tag_pattern = "start_tag",
+	start_name_tag_pattern = "tag_name",
+	end_tag_pattern = "end_tag",
+	end_name_tag_pattern = "tag_name",
+	close_tag_pattern = "end_tag",
+	close_name_tag_pattern = "tag_name",
+	element_tag = "tag|slot",
+	skip_tag_pattern = { "quoted_attribute_value" },
 }
 -- stylua: ignore
 local JSX_TAG = {
@@ -98,6 +111,7 @@ local all_tag = {
 	HBS_TAG,
 	SVELTE_TAG,
 	JSX_TAG,
+	HEEX_TAG,
 }
 M.enable_rename = true
 M.enable_close = true
